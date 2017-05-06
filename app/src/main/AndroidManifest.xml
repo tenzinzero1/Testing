@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.receptix.testing">
-
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,10 +20,14 @@
 
         <receiver android:name=".NoticeBroadCast">
             <intent-filter>
-                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.BATTERY_CHANGED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+
+
             </intent-filter>
-            </receiver>
+        </receiver>
+        <service android:name=".NotificationService"/>
     </application>
 
 </manifest>
